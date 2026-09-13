@@ -1,0 +1,120 @@
+{
+  "name": "project-autostart",
+  "displayName": "Project Autostart",
+  "description": "Infers how to start and stop an unfamiliar repo and runs it with one click.",
+  "version": "0.1.0",
+  "publisher": "bobrowsse-tech",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "project-autostartContainer",
+          "title": "Project Autostart",
+          "icon": "$(play-circle)"
+        }
+      ]
+    },
+    "views": {
+      "project-autostartContainer": [
+        {
+          "id": "project-autostartView",
+          "name": "Dashboard",
+          "type": "webview"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "projectAutostart.scan",
+        "title": "Project Autostart: Scan & Generate Plan"
+      },
+      {
+        "command": "projectAutostart.start",
+        "title": "Project Autostart: Start Project"
+      },
+      {
+        "command": "projectAutostart.stop",
+        "title": "Project Autostart: Stop Project"
+      },
+      {
+        "command": "projectAutostart.viewLogs",
+        "title": "Project Autostart: View Logs"
+      },
+      {
+        "command": "projectAutostart.editRunbook",
+        "title": "Project Autostart: Edit Runbook"
+      }
+    ],
+    "languageModelTools": [
+      {
+        "name": "project_autostart_run",
+        "tags": [
+          "project-autostart"
+        ],
+        "toolReferenceName": "project_autostart_run",
+        "displayName": "Project Autostart — project_autostart_run",
+        "modelDescription": "Starts or stops the current workspace's local development stack using the inferred or saved runbook. Use this when the user asks to run, start, boot up, or stop the project.",
+        "canBeReferencedInPrompt": true,
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "enum": [
+                "scan",
+                "start",
+                "stop",
+                "status"
+              ],
+              "description": "scan: (re)generate the runbook. start: bring the stack up. stop: tear it down. status: report what is running."
+            }
+          },
+          "required": [
+            "action"
+          ]
+        }
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "npm run check-types && node esbuild.js",
+    "check-types": "tsc --noEmit",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "vscode:prepublish": "npm run package",
+    "package": "npm run check-types && node esbuild.js --production",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.95.0",
+    "@types/node": "^20.0.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.0",
+    "esbuild": "^0.24.0",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.6.0"
+  },
+  "dependencies": {
+    "execa": "latest",
+    "tree-kill": "latest",
+    "get-port": "latest",
+    "tcp-port-used": "latest",
+    "yaml": "latest",
+    "toml": "latest",
+    "chokidar": "latest"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bobrowsse-tech/project-autostart"
+  }
+}
