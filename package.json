@@ -120,5 +120,17 @@
   "galleryBanner": {
     "color": "#0F766E",
     "theme": "dark"
+  },
+  "keywords": [
+    "autostart",
+    "runbook",
+    "docker-compose",
+    "dev-server",
+    "onboarding",
+    "productivity"
+  ],
+  "homepage": "https://github.com/bobrowsse-tech/project-autostart#readme",
+  "bugs": {
+    "url": "https://github.com/bobrowsse-tech/project-autostart/issues"
   }
 }
