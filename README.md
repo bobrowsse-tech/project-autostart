@@ -1,25 +1,44 @@
 # Project Autostart
 
-Infers how to start and stop an unfamiliar repo and runs it with one click.
+Infers how to start and stop an unfamiliar repo and runs it with one click — npm scripts, Docker Compose, Procfile, Python, and Makefile targets.
 
-Open a workspace, open the **Project Autostart** side panel, then:
-
-1. **Scan & Generate Plan** — fingerprints npm scripts, Docker Compose, Procfile, Python, and Makefile targets, then writes a dependency-ordered `.runbook.json` you can review.
-2. **Start Project** — runs each step in order, waiting for health checks (TCP / HTTP / grace period) before continuing.
-3. **Stop Project** — tears down tracked processes (and compose services) in reverse order.
-4. **View Logs** / **Edit Runbook** — inspect interleaved service logs or fix a wrong command/health check by hand.
-
-Agents (Copilot Chat, Claude Code, and other Language Model Tool clients) can call `project_autostart_run` with `scan`, `start`, `stop`, or `status`.
-
-## Development
+## Install
 
 ```bash
+git clone https://github.com/bobrowsse-tech/project-autostart.git
+cd project-autostart
 npm install
-npm run watch    # esbuild + tsc in watch mode
-npm run test:unit
+npm run package
+npx @vscode/vsce package --no-dependencies
+code --install-extension project-autostart-0.1.0.vsix
 ```
 
-Press `F5` in VS Code to launch an Extension Development Host.
+Or press **F5** in VS Code / Cursor after `npm install` to launch an Extension Development Host.
+
+## Use
+
+Open a workspace, then open the **Project Autostart** activity-bar panel:
+
+| Action | What it does |
+|---|---|
+| **Scan & Generate Plan** | Fingerprints the repo and writes a dependency-ordered `.runbook.json` |
+| **Start Project** | Runs each step in order, waiting for health checks |
+| **Stop Project** | Tears down tracked processes in reverse order |
+| **View Logs** / **Edit Runbook** | Inspect logs or correct a command/health check by hand |
+
+Agents (Copilot Chat, Claude Code, etc.) can call the Language Model Tool `project_autostart_run` with `scan`, `start`, `stop`, or `status`.
+
+## How it’s built
+
+- **TypeScript** (strict) + **esbuild** CJS bundle (`dist/extension.js`)
+- VS Code Extension API `^1.95.0` — side-panel `WebviewView`, commands, Language Model Tool
+- Core logic lives in `src/service/` with **no** `vscode` imports (shared by UI + LM tool)
+
+```bash
+npm run watch      # esbuild + tsc
+npm run test:unit  # Node test runner via tsx
+npm run package    # production bundle
+```
 
 ## License
 

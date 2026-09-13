@@ -6,4 +6,8 @@ out/
 .vscode-test/
 .DS_Store
 *.log
-
+DIRECTIVE.md
+AGENTS.md
+generate.py
+.cursor/
+.agents/

@@ -21,7 +21,7 @@ export class DashboardProvider implements vscode.WebviewViewProvider {
   private services: ServiceRow[] = [];
   private logLines: string[] = [];
 
-  constructor(private readonly extensionUri: vscode.Uri) {}
+  constructor() {}
 
   resolveWebviewView(webviewView: vscode.WebviewView) {
     this.view = webviewView;
