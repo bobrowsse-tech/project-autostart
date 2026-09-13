@@ -92,25 +92,24 @@
     "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
     "vscode:prepublish": "npm run package",
     "package": "npm run check-types && node esbuild.js --production",
-    "test": "vscode-test"
+    "test": "vscode-test",
+    "test:unit": "npm run check-types && tsx --test src/test/service.test.ts"
   },
   "devDependencies": {
-    "@types/vscode": "^1.95.0",
     "@types/node": "^20.0.0",
+    "@types/vscode": "^1.95.0",
     "@vscode/test-cli": "^0.0.10",
     "@vscode/test-electron": "^2.4.0",
     "esbuild": "^0.24.0",
     "npm-run-all": "^4.1.5",
+    "tsx": "^4.19.0",
     "typescript": "^5.6.0"
   },
   "dependencies": {
-    "execa": "latest",
-    "tree-kill": "latest",
-    "get-port": "latest",
-    "tcp-port-used": "latest",
-    "yaml": "latest",
-    "toml": "latest",
-    "chokidar": "latest"
+    "ignore": "^7.0.9",
+    "toml": "^5.0.0",
+    "tree-kill": "^1.2.2",
+    "yaml": "^2.9.1"
   },
   "license": "MIT",
   "repository": {

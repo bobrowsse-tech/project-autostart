@@ -1,0 +1,10 @@
+{
+  "name": "mixed-api",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "engines": {
+    "node": ">=18",
+    "REDIS_URL": "redis://localhost:6379"
+  }
+}

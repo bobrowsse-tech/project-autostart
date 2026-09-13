@@ -1,0 +1,6 @@
+[project]
+name = "mixed-worker"
+scripts = { serve = "worker:main" }
+
+[tool.poetry]
+name = "mixed-worker"

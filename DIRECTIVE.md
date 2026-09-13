@@ -1,7 +1,7 @@
 
 # Build Directive — Project Autostart
 
-> Rank **#1** in the Unbuilt VS Code Tools roadmap. This directive is written for an AI coding agent (Claude Code, Copilot agent mode, or a human following along) to execute directly. The `project-autostart/` folder next to this file already contains a working scaffold — activation, side-panel dashboard, command registration, and a Language Model Tool stub — generated per the shared conventions in `../AGENTS.md`. Everything marked `TODO` below is the real remaining work.
+> Rank **#1** in the Unbuilt VS Code Tools roadmap. This directive is written for an AI coding agent (Claude Code, Copilot agent mode, or a human following along) to execute directly. This repository already contains a working scaffold — activation, side-panel dashboard, command registration, and a Language Model Tool stub — following the suite conventions (TypeScript strict, esbuild bundle, WebviewView dashboard, shared VS Code–free service module, Language Model Tool). Everything marked `TODO` below is the real remaining work.
 
 ## 1. Objective
 
@@ -45,9 +45,11 @@ Buttons call `vscode.commands.executeCommand`, not the tool logic directly — k
 
 ## 6. Suggested dependencies
 
-`execa`, `tree-kill`, `get-port`, `tcp-port-used`, `yaml`, `toml`, `chokidar`
+`ignore`, `yaml`, `toml`, `tree-kill`
 
-Install as regular `dependencies` (already stubbed into `package.json` — replace the `"latest"` version pins with the actual resolved versions once installed, per the pinning convention in `AGENTS.md`).
+Health checks use Node's built-in `net`/`http` (no `tcp-port-used`). Process spawn uses `child_process` (no `execa`). Install as regular `dependencies` and pin resolved versions in `package.json`.
+
+Optional later: `chokidar` if you add live runbook reload; `get-port` if you add dynamic port allocation.
 
 ## 7. Edge cases & safety notes
 

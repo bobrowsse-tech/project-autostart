@@ -8,7 +8,10 @@
     "sourceMap": true,
     "rootDir": "src",
     "strict": true,
-    "outDir": "out"
+    "outDir": "out",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "moduleResolution": "Node16"
   },
   "exclude": [
     "node_modules",

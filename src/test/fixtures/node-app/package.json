@@ -1,0 +1,8 @@
+{
+  "name": "demo-node-app",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "engines": { "node": ">=18" }
+}
