@@ -43,3 +43,7 @@ npm run package    # production bundle
 ## License
 
 MIT
+
+## Contributing
+
+Changes to `main` must go through a pull request. See [CONTRIBUTING.md](./CONTRIBUTING.md).
