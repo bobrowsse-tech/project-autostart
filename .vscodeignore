@@ -7,3 +7,7 @@ esbuild.js
 **/*.map
 **/.eslintrc.json
 generate.py
+DIRECTIVE.md
+node_modules/**
+**/*.vsix
+src/test/**
