@@ -115,5 +115,10 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/bobrowsse-tech/project-autostart"
+  },
+  "icon": "images/icon.png",
+  "galleryBanner": {
+    "color": "#0F766E",
+    "theme": "dark"
   }
 }
